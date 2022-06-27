@@ -1,0 +1,76 @@
+{
+  "LIVROS": [
+    {
+      "PutRequest": {
+        "Item": {          
+          "author": {
+            "S": "J.R.R. Tolkien"
+          },
+          "name": {
+            "S": "O Senhor dos Anéis"
+          },
+          "livro_id": {
+            "S": "ring1"
+          },
+          "status": {
+            "BOOL": true
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {          
+          "author": {
+            "S": "J.R.R. Tolkien"
+          },
+          "name": {
+            "S": "O Senhor dos Anéis 2"
+          },
+          "livro_id": {
+            "S": "ring2"
+          },
+          "status": {
+            "BOOL": true
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {          
+          "author": {
+            "S": "J.R.R. Tolkien"
+          },
+          "name": {
+            "S": "O Senhor dos Anéis 3"
+          },
+          "livro_id": {
+            "S": "ring3"
+          },
+          "status": {
+            "BOOL": true
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {          
+          "author": {
+            "S": "J.R.R. Tolkien"
+          },
+          "name": {
+            "S": "O Senhor dos Anéis Série"
+          },
+          "livro_id": {
+            "S": "ringseries"
+          },
+          "status": {
+            "BOOL": true
+          }
+        }
+      }
+    } 
+  ]
+}

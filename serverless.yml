@@ -1,0 +1,74 @@
+service: api-uff
+
+plugins:
+ # npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+   - "serverless-offline"
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:PutItem
+            - dynamodb:DeleteItem    
+            - dynamodb:GetItem
+            - dynamodb:UpdateItem
+          Resource: arn:aws:dynamodb:us-east-1:156576838335:table/LIVROS
+
+functions:
+  livros:
+    handler: handler.livros
+    events:
+      - http:
+          path: livros
+          method: get
+  obterLivro:
+    handler: handler.obterLivro
+    events:
+      - http:
+          path: livros/{livroId}
+          method: get
+  cadastrarLivro:
+    handler: handler.cadastrarLivro
+    events:
+      - http:
+          path: livros
+          method: post        
+  atualizarLivro:
+    handler: handler.atualizarLivro
+    events:
+      - http:
+          path: livros/{livroId}
+          method: put          
+  excluirLivro:
+    handler: handler.excluirLivro
+    events:
+      - http:
+          path: livros/{livroId}
+          method: delete  
+  
+resources:
+  Resources:
+    LivrosTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: LIVROS
+        AttributeDefinitions:
+          - AttributeName: livro_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: livro_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1                   
+
